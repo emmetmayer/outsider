@@ -18,6 +18,8 @@ public class UISystem : MonoBehaviour
     [SerializeField] TextMeshProUGUI interactPrompt;
     [SerializeField] Collider playerTarget;
 
+    [SerializeField] GameObject dialoguePanel;
+
     //variables for the use of the dialogue camera
     [SerializeField] CinemachineTargetGroup dialogueTarget;
     [SerializeField] CinemachineVirtualCamera dialogueCam;
@@ -31,6 +33,7 @@ public class UISystem : MonoBehaviour
         playerTarget = null;
         cam = Camera.main;
         player = PlayerControl.player;
+        dialoguePanel.SetActive(false);
     }
 
     public void SetPlayerTarget(Collider target)
@@ -72,12 +75,14 @@ public class UISystem : MonoBehaviour
     public void StartDialogue()
     {
         CameraManager.cameraManager.SwitchCamera(dialogueCam);
+        dialoguePanel.SetActive(true);
         dialogue = true;
     }
 
     public void EndDialogue()
     {
         CameraManager.cameraManager.SwitchCamera(PlayerControl.player.mainCamera);
+        dialoguePanel.SetActive(false);
         dialogue = false;
     }
 }
