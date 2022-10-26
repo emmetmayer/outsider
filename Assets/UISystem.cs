@@ -33,6 +33,7 @@ public class UISystem : MonoBehaviour
         playerTarget = null;
         cam = Camera.main;
         player = PlayerControl.player;
+        dialoguePanel = GameObject.Find("DialoguePanel");
         dialoguePanel.SetActive(false);
     }
 
