@@ -19,6 +19,8 @@ public class UISystem : MonoBehaviour
     [SerializeField] Collider playerTarget;
 
     [SerializeField] GameObject dialoguePanel;
+    private TextMeshProUGUI dialogueMain;
+    private DialogueObject currentDialogue;
 
     //variables for the use of the dialogue camera
     [SerializeField] CinemachineTargetGroup dialogueTarget;
@@ -34,6 +36,7 @@ public class UISystem : MonoBehaviour
         cam = Camera.main;
         player = PlayerControl.player;
         dialoguePanel = GameObject.Find("DialoguePanel");
+        dialogueMain = dialoguePanel.GetComponentInChildren<TextMeshProUGUI>();
         dialoguePanel.SetActive(false);
     }
 
@@ -73,11 +76,27 @@ public class UISystem : MonoBehaviour
             interactImg.gameObject.SetActive(false);
         }
     }
-    public void StartDialogue()
+    public void StartDialogue(DialogueObject dialogueObj)
     {
         CameraManager.cameraManager.SwitchCamera(dialogueCam);
         dialoguePanel.SetActive(true);
+        currentDialogue = dialogueObj;
+        dialogueMain.text = currentDialogue.text;
         dialogue = true;
+        player.canMove = false;
+    }
+
+    public void ContinueDialogue()
+    {
+        if(currentDialogue.dialogueOptions.Length != 0)
+        {
+            currentDialogue = currentDialogue.dialogueOptions[0];
+            dialogueMain.text = currentDialogue.text;
+        }
+        else
+        {
+            EndDialogue();
+        }
     }
 
     public void EndDialogue()
@@ -85,5 +104,6 @@ public class UISystem : MonoBehaviour
         CameraManager.cameraManager.SwitchCamera(PlayerControl.player.mainCamera);
         dialoguePanel.SetActive(false);
         dialogue = false;
+        player.canMove = true;
     }
 }
