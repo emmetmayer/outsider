@@ -6,6 +6,8 @@ public class DoorController : Interactable
 {
     private bool open;
     [SerializeField] GameObject door;
+    [SerializeField] DialogueObject keyDialogue;
+    [SerializeField] DialogueObject noKeyDialogue;
 
     // Start is called before the first frame update
     private void Start()
@@ -24,26 +26,25 @@ public class DoorController : Interactable
     // Update is called once per frame
     override public void Interact()
     {
-        if(!UISystem.uiSystem.dialogue)
+        if(!open)
         {
-            UISystem.uiSystem.StartDialogue();
+            if (GameObject.Find("Player").GetComponent<PlayerControl>().hasKey == true)
+            {
+                UISystem.uiSystem.StartDialogue(keyDialogue);
+                open = !open;
+                prompt = "Close";
+                door.SetActive(false);
+            }
+            else
+            {
+                UISystem.uiSystem.StartDialogue(noKeyDialogue);
+            }
         }
         else
-        {
-            UISystem.uiSystem.EndDialogue();
-        }
-
-        if(open)
         {
             open = !open;
             prompt = "Open";
             door.SetActive(true);
-        }
-        else if(GameObject.Find("Player").GetComponent<PlayerControl>().hasKey == true)
-        {
-            open = !open;
-            prompt = "Close";
-            door.SetActive(false);
         }
     }
 }

@@ -9,6 +9,7 @@ public class PlayerControl : MonoBehaviour
     const float INTERACT_RANGE = 5f;
 
     public CharacterController controller;
+    public bool canMove;
     public CinemachineVirtualCamera mainCamera;
 
     Collider target;
@@ -21,6 +22,7 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         player = this;
+        canMove = true;
         controller = GetComponent<CharacterController>();
         mainCamera = GetComponentInChildren<CinemachineVirtualCamera>();
     }
@@ -32,14 +34,23 @@ public class PlayerControl : MonoBehaviour
 
         UISystem.uiSystem.SetPlayerTarget(target);
 
-        if(Input.GetKeyDown(KeyCode.E) && target)
+        if(Input.GetKeyDown(KeyCode.E))
         {
-            target.GetComponent<Interactable>().Interact();
+            if(UISystem.uiSystem.dialogue)
+            {
+                UISystem.uiSystem.ContinueDialogue();
+            }
+            else if (target)
+            {
+                target.GetComponent<Interactable>().Interact();
+            } 
         }
 
-        Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
-        controller.Move(input * Time.deltaTime * speed);
-        
+        if(canMove)
+        {
+            Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
+            controller.Move(input * Time.deltaTime * speed);
+        }
     }
 
     private Collider FindInteractables()

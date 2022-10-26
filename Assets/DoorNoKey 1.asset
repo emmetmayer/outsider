@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1f33f61b0b0ab440b375933845cb2d8, type: 3}
-  m_Name: DoorNoKey
+  m_Name: DoorNoKey 1
   m_EditorClassIdentifier: 
-  text: 
-  dialogueOptions: []
+  text: ACCESS DENIED, KEYCARD REQUIRED.
+  dialogueOptions:
+  - {fileID: 11400000, guid: 34ee19ac19f34094790e9d3c9107e42d, type: 2}
