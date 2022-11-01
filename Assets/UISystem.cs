@@ -65,7 +65,7 @@ public class UISystem : MonoBehaviour
 
 
 
-        if (playerTarget)
+        if (playerTarget && !dialogue)
         {
             interactImg.transform.position = cam.WorldToScreenPoint(playerTarget.transform.position);
             interactImg.gameObject.SetActive(true);
