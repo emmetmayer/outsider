@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1f33f61b0b0ab440b375933845cb2d8, type: 3}
-  m_Name: DoorKey1
+  m_Name: Mission0Dialogue 4
   m_EditorClassIdentifier: 
-  speaker: Intercom
-  text: ACCESS GRANTED.
-  dialogueOptions: []
+  speaker: Jonathan
+  text: Your pod is equipped with everything you need to analyze the samples and
+    send the data back to HQ. Bring the samples back here once you have them.
+  dialogueOptions:
+  - {fileID: 11400000, guid: 99f9b2efa4f8a1c49901088230bdaa82, type: 2}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 using Cinemachine;
 
@@ -19,8 +20,13 @@ public class UISystem : MonoBehaviour
     [SerializeField] Collider playerTarget;
 
     [SerializeField] GameObject dialoguePanel;
+    private TextMeshProUGUI speakerText;
     private TextMeshProUGUI dialogueMain;
     private DialogueObject currentDialogue;
+
+    [SerializeField] TextMeshProUGUI missionText;
+    [SerializeField] MissionObject firstMission;
+    public List<MissionObject> missionList;
 
     //variables for the use of the dialogue camera
     [SerializeField] CinemachineTargetGroup dialogueTarget;
@@ -31,12 +37,17 @@ public class UISystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(firstMission)
+        {
+            missionList.Add(ScriptableObject.Instantiate(firstMission));
+        }
         uiSystem = this;
         playerTarget = null;
         cam = Camera.main;
         player = PlayerControl.player;
         dialoguePanel = GameObject.Find("DialoguePanel");
-        dialogueMain = dialoguePanel.GetComponentInChildren<TextMeshProUGUI>();
+        dialogueMain = dialoguePanel.GetComponentsInChildren<TextMeshProUGUI>()[0];
+        speakerText = dialoguePanel.GetComponentsInChildren<TextMeshProUGUI>()[1];
         dialoguePanel.SetActive(false);
     }
 
@@ -48,6 +59,33 @@ public class UISystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        missionText.text = "";
+        foreach (MissionObject mission in missionList)
+        {
+            if(mission.completed)
+            {
+                if (mission.completionProgress == 1)
+                {
+                    missionText.text += string.Format("<s>- {0}</s>\n", mission.text);
+                }
+                else
+                {
+                    missionText.text += string.Format("<s>- {0}/{1} {2}</s>\n", mission.progress, mission.completionProgress, mission.text);
+                }
+            }
+            else
+            {
+                if(mission.completionProgress == 1)
+                {
+                    missionText.text += string.Format("- {0}\n", mission.text);
+                }
+                else
+                {
+                    missionText.text += string.Format("- {0}/{1} {2}\n", mission.progress, mission.completionProgress, mission.text);
+                }   
+            }
+        }
+
         if (playerTarget)
         {
             dialogueTarget.m_Targets = null;
@@ -64,8 +102,8 @@ public class UISystem : MonoBehaviour
         }
 
 
-
-        if (playerTarget && !dialogue)
+        //interaction icon 
+        if (playerTarget && !dialogue && playerTarget.GetComponent<Interactable>().interactable)
         {
             interactImg.transform.position = cam.WorldToScreenPoint(playerTarget.transform.position);
             interactImg.gameObject.SetActive(true);
@@ -82,6 +120,7 @@ public class UISystem : MonoBehaviour
         dialoguePanel.SetActive(true);
         currentDialogue = dialogueObj;
         dialogueMain.text = currentDialogue.text;
+        speakerText.text = currentDialogue.speaker;
         dialogue = true;
         player.canMove = false;
     }
@@ -91,6 +130,7 @@ public class UISystem : MonoBehaviour
         if(currentDialogue.dialogueOptions.Length != 0)
         {
             currentDialogue = currentDialogue.dialogueOptions[0];
+            speakerText.text = currentDialogue.speaker;
             dialogueMain.text = currentDialogue.text;
         }
         else
@@ -105,5 +145,27 @@ public class UISystem : MonoBehaviour
         dialoguePanel.SetActive(false);
         dialogue = false;
         player.canMove = true;
+    }
+
+    public void ProgressMission(string name)
+    {
+        MissionObject mission = missionList[^1];
+        if(mission.mission == name)
+        {
+            mission.progress++;
+            if (mission.progress == mission.completionProgress)
+            {
+                mission.completed = true;
+                if(mission.nextMissions.Length == 0)
+                {
+                    PlayerPrefs.SetInt("missions", PlayerPrefs.GetInt("missions") + 1);
+                    SceneManager.LoadScene(0);
+                }
+                else
+                {
+                    missionList.Add(ScriptableObject.Instantiate(mission.nextMissions[0]));
+                }
+            }
+        }   
     }
 }
