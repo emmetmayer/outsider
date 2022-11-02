@@ -51,8 +51,6 @@ public class PlayerControl : MonoBehaviour
             Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
             controller.Move(input * Time.deltaTime * speed);
         }
-        // This line makes gravity work :)
-        controller.SimpleMove(Vector3.forward * 0);
     }
 
     private Collider FindInteractables()
