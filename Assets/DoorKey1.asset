@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f33f61b0b0ab440b375933845cb2d8, type: 3}
   m_Name: DoorKey1
   m_EditorClassIdentifier: 
-  speaker: Intercom
   text: ACCESS GRANTED.
   dialogueOptions: []

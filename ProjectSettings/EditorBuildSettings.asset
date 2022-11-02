@@ -8,7 +8,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/spaceship scene.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
-  - enabled: 1
-    path: Assets/Mission1.unity
-    guid: 273b7d2aac340a9479a54c5b14aae193
   m_configObjects: {}

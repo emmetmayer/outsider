@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f33f61b0b0ab440b375933845cb2d8, type: 3}
   m_Name: DoorNoKey 2
   m_EditorClassIdentifier: 
-  speaker: Player
   text: I should look around for a keycard to open this door.
   dialogueOptions: []
