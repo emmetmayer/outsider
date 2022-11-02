@@ -18,10 +18,14 @@ public class PlayerControl : MonoBehaviour
 
     public bool hasKey;
 
+    private void Awake()
+    {
+        player = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
-        player = this;
+        
         canMove = true;
         controller = GetComponent<CharacterController>();
         mainCamera = GetComponentInChildren<CinemachineVirtualCamera>();
@@ -30,6 +34,11 @@ public class PlayerControl : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
+        if (!controller.isGrounded)
+        {
+            controller.Move(Vector3.down * .2f);
+        }
+
         target = FindInteractables(); 
 
         UISystem.uiSystem.SetPlayerTarget(target);
@@ -40,7 +49,7 @@ public class PlayerControl : MonoBehaviour
             {
                 UISystem.uiSystem.ContinueDialogue();
             }
-            else if (target)
+            else if (target && target.GetComponent<Interactable>().interactable)
             {
                 target.GetComponent<Interactable>().Interact();
             } 
@@ -48,7 +57,7 @@ public class PlayerControl : MonoBehaviour
 
         if(canMove)
         {
-            Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
+            Vector3 input = new Vector3(-Input.GetAxisRaw("Horizontal"), 0f, -Input.GetAxisRaw("Vertical")).normalized;
             controller.Move(input * Time.deltaTime * speed);
         }
     }
@@ -66,8 +75,9 @@ public class PlayerControl : MonoBehaviour
                 //check to see if there is anything inbetween the player and the interactable
                 RaycastHit check;
                 Physics.Raycast(controller.transform.position, hit.transform.position - controller.transform.position, out check);
-                if (Vector3.Distance(controller.transform.position, hit.transform.position) < minDist && check.collider == hit)
+                if (Vector3.Distance(controller.transform.position, hit.transform.position) < minDist && check.collider == hit && hit.gameObject.GetComponent<Interactable>().interactable)
                 {
+                    Debug.Log("found int");
                     minDist = Vector3.Distance(controller.transform.position, hit.transform.position);
                     close = hit;
                 }
@@ -79,5 +89,17 @@ public class PlayerControl : MonoBehaviour
     private void OnDrawGizmos()
     {
         if (controller) { Gizmos.DrawWireSphere(controller.transform.position, INTERACT_RANGE); }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.name == "LocateTrigger")
+        {
+            UISystem.uiSystem.ProgressMission("locate");
+        }
+        if (other.name == "BaseTrigger")
+        {
+            UISystem.uiSystem.ProgressMission("base");
+        }
     }
 }

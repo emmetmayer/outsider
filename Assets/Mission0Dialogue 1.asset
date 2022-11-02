@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1f33f61b0b0ab440b375933845cb2d8, type: 3}
-  m_Name: DoorKey1
+  m_Name: Mission0Dialogue 1
   m_EditorClassIdentifier: 
-  speaker: Intercom
-  text: ACCESS GRANTED.
-  dialogueOptions: []
+  speaker: Jonathan
+  text: "Alright recruits, you\u2019re gonna be the first people on the ground so
+    your job is most important. "
+  dialogueOptions:
+  - {fileID: 11400000, guid: ba98958a67fef9c44bad95271cddbea3, type: 2}

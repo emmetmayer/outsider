@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1f33f61b0b0ab440b375933845cb2d8, type: 3}
-  m_Name: DoorKey1
+  m_Script: {fileID: 11500000, guid: 6649063cb84aab5439dff8096238e1c2, type: 3}
+  m_Name: BaseMission
   m_EditorClassIdentifier: 
-  speaker: Intercom
-  text: ACCESS GRANTED.
-  dialogueOptions: []
+  mission: base
+  text: Return to base
+  progress: 0
+  completionProgress: 1
+  completed: 0
+  nextMissions: []
