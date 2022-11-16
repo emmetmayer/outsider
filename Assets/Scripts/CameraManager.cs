@@ -6,7 +6,7 @@ using Cinemachine;
 public class CameraManager : MonoBehaviour
 {
     public static CameraManager cameraManager;
-    public CinemachineVirtualCamera currentCam;
+    public ICinemachineCamera currentCam;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,7 @@ public class CameraManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void SwitchCamera(CinemachineVirtualCamera newCam)
+    public void SwitchCamera(ICinemachineCamera newCam)
     {
         currentCam.Priority = 10;
         newCam.Priority = 11;

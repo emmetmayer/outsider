@@ -10,25 +10,30 @@ public class PlayerControl : MonoBehaviour
 
     public CharacterController controller;
     public bool canMove;
-    public CinemachineVirtualCamera mainCamera;
+    public CinemachineFreeLook mainCamera;
+    public CinemachineVirtualCamera moveCamera;
 
     Collider target;
 
     [SerializeField] float speed;
+    [SerializeField] float turnSmoothVelocity;
+    [SerializeField] float turnSpeed;
 
     public bool hasKey;
 
     private void Awake()
     {
         player = this;
+        canMove = true;
+        controller = GetComponent<CharacterController>();
+        mainCamera = GetComponentInChildren<CinemachineFreeLook>();
+        moveCamera = GetComponentInChildren<CinemachineVirtualCamera>();
     }
     // Start is called before the first frame update
     void Start()
     {
         
-        canMove = true;
-        controller = GetComponent<CharacterController>();
-        mainCamera = GetComponentInChildren<CinemachineVirtualCamera>();
+        
     }
 
     //Update is called once per frame
@@ -57,8 +62,17 @@ public class PlayerControl : MonoBehaviour
 
         if(canMove)
         {
-            Vector3 input = new Vector3(-Input.GetAxisRaw("Horizontal"), 0f, -Input.GetAxisRaw("Vertical")).normalized;
-            controller.Move(input * Time.deltaTime * speed);
+
+            Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
+            if (input.magnitude >= 0.1f)
+            {
+                float targetAngle = Mathf.Atan2(input.x, input.z) * Mathf.Rad2Deg + moveCamera.transform.eulerAngles.y;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSpeed);
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+                Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                controller.Move(moveDirection.normalized * Time.deltaTime * speed);
+            }
         }
     }
 
