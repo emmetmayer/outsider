@@ -10,8 +10,8 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: -168361543657345175}
-    m_Position: {x: 400.4, y: 149, z: 0}
+    m_State: {fileID: -4558695688020590119}
+    m_Position: {x: 361.4, y: 195, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -21,15 +21,15 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -168361543657345175}
---- !u!1102 &-168361543657345175
+  m_DefaultState: {fileID: -4558695688020590119}
+--- !u!1102 &-4558695688020590119
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: walking
+  m_Name: talking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -42,7 +42,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: 94046b53a5b6ae54d8d0dc7941d579a1,
+  m_Motion: {fileID: 1827226128182048838, guid: a3b49b55baf166540aaf60c4452f7dc9,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
