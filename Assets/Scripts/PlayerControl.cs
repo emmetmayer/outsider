@@ -11,7 +11,7 @@ public class PlayerControl : MonoBehaviour
     public CharacterController controller;
     public bool canMove;
     public CinemachineFreeLook mainCamera;
-    public CinemachineVirtualCamera moveCamera;
+    public Camera moveCamera;
 
     Collider target;
 
@@ -27,13 +27,12 @@ public class PlayerControl : MonoBehaviour
         canMove = true;
         controller = GetComponent<CharacterController>();
         mainCamera = GetComponentInChildren<CinemachineFreeLook>();
-        moveCamera = GetComponentInChildren<CinemachineVirtualCamera>();
+        
     }
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+        moveCamera = Camera.main;
     }
 
     //Update is called once per frame
@@ -64,7 +63,7 @@ public class PlayerControl : MonoBehaviour
         {
 
             Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
-            if (input.magnitude >= 0.1f)
+            if (input.magnitude >= 0.001f)
             {
                 float targetAngle = Mathf.Atan2(input.x, input.z) * Mathf.Rad2Deg + moveCamera.transform.eulerAngles.y;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSpeed);
