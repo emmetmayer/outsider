@@ -18,4 +18,4 @@ MonoBehaviour:
   completionProgress: 2
   completed: 0
   nextMissions:
-  - {fileID: 11400000, guid: 914ba0471e494ed46a9f003468a30d2b, type: 2}
+  - {fileID: 11400000, guid: e46feb78dda65f94694309f3ff5943ed, type: 2}

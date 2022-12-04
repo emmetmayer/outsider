@@ -15,5 +15,4 @@ MonoBehaviour:
   speaker: Jonathan
   text: The observation team up here will be watching in case anything interesting
     happens.
-  dialogueOptions:
-  - {fileID: 0}
+  dialogueOptions: []

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6649063cb84aab5439dff8096238e1c2, type: 3}
   m_Name: RecorderMission
   m_EditorClassIdentifier: 
-  mission: camera
-  text: Place cameras
+  mission: recorder
+  text: Place recorders
   progress: 0
   completionProgress: 2
   completed: 0
