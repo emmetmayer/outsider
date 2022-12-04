@@ -17,14 +17,15 @@ public class SlimeMove : MonoBehaviour
     private float _speed;
     private float _walkRange; //how far around they will patrol
     private float _detectRange;
+    private float _detectAngle;
 
-    public void Initialize(float speed = 1f, float walkRange = 5f, float detectRange = 5f, List<Vector3> patrolPoints = null)
+    public void Initialize(float speed = 1f, float walkRange = 5f, float detectRange = 5f, float detectAngle = 90f,  List<Vector3> patrolPoints = null)
     {
 
         _speed = speed;
         _walkRange = walkRange;
-        //more of a formallity since we set the collider radious 
         _detectRange = detectRange;
+        _detectAngle = detectAngle;
 
         if (patrolPoints == null)
         {
@@ -58,11 +59,11 @@ public class SlimeMove : MonoBehaviour
             Patrol();
         }
 
-        if (!_detectedPlayer && Vector3.Distance(transform.position, _playerRef.transform.position) < _detectRange)
+        if (!_detectedPlayer && Vector3.Distance(transform.position, _playerRef.transform.position) < _detectRange && (Vector3.Angle(transform.forward, _playerRef.transform.position - transform.position) < _detectAngle))
         {
             _detectedPlayer = true;
         }
-        else if (_detectedPlayer && Vector3.Distance(transform.position, _playerRef.transform.position) > _detectRange)
+        else if (_detectedPlayer && Vector3.Distance(transform.position, _playerRef.transform.position) > _detectRange && (Vector3.Angle(transform.forward, _playerRef.transform.position - transform.position) > _detectAngle))
         {
             _detectedPlayer = false;
         }
