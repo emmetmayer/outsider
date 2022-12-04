@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6745127230394825568}
   - component: {fileID: 8826903758206111658}
   - component: {fileID: 7908008215263163422}
-  - component: {fileID: 7908008215263163418}
+  - component: {fileID: 6351812248020851148}
   m_Layer: 6
-  m_Name: camera
+  m_Name: recorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7025485965309259391}
   m_LocalRotation: {x: -0.05141598, y: 0.8321724, z: 0.54307395, w: 0.09958057}
   m_LocalPosition: {x: -2.432, y: 23.447, z: 153.463}
-  m_LocalScale: {x: 28.330002, y: 7.335852, z: 3.9454904}
+  m_LocalScale: {x: 25, y: 25, z: 25}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7025485965309259391}
-  m_Mesh: {fileID: 2212009239438826721, guid: bd4c5224c8543d54894fea6258aa21cd, type: 3}
+  m_Mesh: {fileID: 8691780276856062721, guid: e20d939c740771a43a0109672f59822c, type: 3}
 --- !u!23 &8826903758206111658
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -98,8 +98,8 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 2212009239438826721, guid: bd4c5224c8543d54894fea6258aa21cd, type: 3}
---- !u!114 &7908008215263163418
+  m_Mesh: {fileID: 8691780276856062721, guid: e20d939c740771a43a0109672f59822c, type: 3}
+--- !u!114 &6351812248020851148
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,9 +108,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7025485965309259391}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48d5bc62a9a1b014bbb8aaa077f62960, type: 3}
+  m_Script: {fileID: 11500000, guid: efcde396f142f55449292ebd12d4d983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactable: 1
-  normalMat: {fileID: 2100000, guid: 0afbced4bcb9ad6469a6e34a1f051453, type: 2}
-  completionDialogue: {fileID: 11400000, guid: 7aacb8f9ba4534840bf2179653f7ae9e, type: 2}
+  normalMat: {fileID: -1134714066672644336, guid: fe532c78a5d048644b4d4b65c36ca231,
+    type: 3}
+  completionDialogue: {fileID: 11400000, guid: 3a31d0258d200c04b9448789ec8219c9, type: 2}

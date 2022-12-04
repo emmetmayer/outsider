@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactable: 1
-  completionDialogue: {fileID: 11400000, guid: a1fdbbb69171c7c4fa047bd0cee6a6de, type: 2}
+  completionDialogue: {fileID: 11400000, guid: cec1f8ef84325d443bea4c7529fa2149, type: 2}
 --- !u!64 &8608424749286262830
 MeshCollider:
   m_ObjectHideFlags: 0

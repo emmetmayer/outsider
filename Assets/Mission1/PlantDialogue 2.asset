@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1f33f61b0b0ab440b375933845cb2d8, type: 3}
-  m_Name: PlantDialogue
+  m_Name: PlantDialogue 2
   m_EditorClassIdentifier: 
   speaker: Jonathan
-  text: "Got everything? Alright, go to your pod and let\u2019s get these analyzed."
+  text: "The lab will analyze this to see if there\u2019s anything we can do with
+    it."
   dialogueOptions: []
