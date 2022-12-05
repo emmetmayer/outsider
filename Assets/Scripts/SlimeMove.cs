@@ -19,7 +19,7 @@ public class SlimeMove : MonoBehaviour
     private float _detectRange;
     private float _detectAngle;
 
-    public void Initialize(float speed = 1f, float walkRange = 5f, float detectRange = 5f, float detectAngle = 90f,  List<Vector3> patrolPoints = null)
+    public void Initialize(float speed = 1f, float walkRange = 5f, float detectRange = 10f, float detectAngle = 70f,  List<Vector3> patrolPoints = null)
     {
 
         _speed = speed;

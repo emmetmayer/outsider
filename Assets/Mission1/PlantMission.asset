@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6649063cb84aab5439dff8096238e1c2, type: 3}
-  m_Name: RecorderMission
+  m_Name: PlantMission
   m_EditorClassIdentifier: 
-  mission: recorder
-  text: Place recorders
+  mission: plant
+  text: Take plant samples
   progress: 0
-  completionProgress: 2
+  completionProgress: 3
   completed: 0
   nextMissions:
-  - {fileID: 11400000, guid: 7068bc1db058d8840953efc94ddef725, type: 2}
+  - {fileID: 11400000, guid: 93c28d42828aa4544ad2c840c01bf486, type: 2}

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1f33f61b0b0ab440b375933845cb2d8, type: 3}
-  m_Name: PlantDialogue 2
+  m_Name: Slime Dialogue 2
   m_EditorClassIdentifier: 
   speaker: Jonathan
-  text: "The lab will analyze this to see if there\u2019s anything we can do with
-    it."
+  text: 'The lab will be able to analyze this and make some kind of disguise so you
+    can interact with the slimes more closely. '
   dialogueOptions:
-  - {fileID: 11400000, guid: 2f38a8f445a007e45b9850033605456f, type: 2}
+  - {fileID: 11400000, guid: 3a8004092c7bd1044b2b4f3bd698e0ac, type: 2}

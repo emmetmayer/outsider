@@ -21,6 +21,8 @@ public class PlayerControl : MonoBehaviour
 
     public bool hasKey;
 
+    [SerializeField] Animator anim;
+
     private void Awake()
     {
         player = this;
@@ -65,6 +67,7 @@ public class PlayerControl : MonoBehaviour
             Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
             if (input.magnitude >= 0.001f)
             {
+                anim.Play("walk");
                 float targetAngle = Mathf.Atan2(input.x, input.z) * Mathf.Rad2Deg + moveCamera.transform.eulerAngles.y;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSpeed);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
