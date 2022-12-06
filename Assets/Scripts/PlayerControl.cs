@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Cinemachine;
 
 public class PlayerControl : MonoBehaviour
@@ -21,12 +22,15 @@ public class PlayerControl : MonoBehaviour
 
     public bool hasKey;
 
+    [SerializeField] GameObject disguise;
     [SerializeField] Animator anim;
+    [SerializeField] DialogueObject forest;
 
     private void Awake()
     {
         player = this;
         canMove = true;
+        disguise.SetActive(false);
         controller = GetComponent<CharacterController>();
         mainCamera = GetComponentInChildren<CinemachineFreeLook>();
         
@@ -34,6 +38,10 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(SceneManager.GetActiveScene().name == "Mission4")
+        {
+            disguise.SetActive(true);
+        }
         moveCamera = Camera.main;
     }
 
@@ -67,13 +75,17 @@ public class PlayerControl : MonoBehaviour
             Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
             if (input.magnitude >= 0.001f)
             {
-                anim.Play("walk");
+                anim.speed = 2f;
                 float targetAngle = Mathf.Atan2(input.x, input.z) * Mathf.Rad2Deg + moveCamera.transform.eulerAngles.y;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSpeed);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
                 Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                 controller.Move(moveDirection.normalized * Time.deltaTime * speed);
+            }
+            else
+            {
+                anim.speed = 0f;
             }
             
         }
@@ -114,9 +126,19 @@ public class PlayerControl : MonoBehaviour
         {
             UISystem.uiSystem.ProgressMission("locate");
         }
+        if (other.name == "ForestTrigger" && UISystem.uiSystem.missionList[^1].mission == "forest")
+        {
+            UISystem.uiSystem.StartDialogue(forest);
+            UISystem.uiSystem.ProgressMission("forest");
+        }
         if (other.name == "BaseTrigger")
         {
             UISystem.uiSystem.ProgressMission("base");
+        }
+        if (other.gameObject.layer == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Debug.Log("restart");
         }
     }
 }

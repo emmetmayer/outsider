@@ -3,7 +3,22 @@ guid: f590b1c837ca61c47bcbb09b6522a8ee
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: robotbody2
+    second: {fileID: 2100000, guid: ef3bf6da14550ed47939b81f0fab3300, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: top1
+    second: {fileID: 2100000, guid: 3cad2627622b491428f07c98c20bcd41, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wheels
+    second: {fileID: 2100000, guid: b450eec14724e4b4f829fe64b9e3ccc9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

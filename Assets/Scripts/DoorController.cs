@@ -22,6 +22,6 @@ public class DoorController : Interactable
     // Update is called once per frame
     override public void Interact()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(PlayerPrefs.GetInt("mission"));
     }
 }

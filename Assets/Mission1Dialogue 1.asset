@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mission1Dialogue 1
   m_EditorClassIdentifier: 
   speaker: Jonathan
-  text: "Head to your room and place your samples on the desk, it\u2019ll automatically
-    start analyzing any foreign material on it."
+  text: "Alright recruits, you\u2019re gonna be the first people on the ground so
+    your job is most important. "
   dialogueOptions:
-  - {fileID: 11400000, guid: eb05593afc6c1c74eba7c70183a2bc45, type: 2}
+  - {fileID: 11400000, guid: ba98958a67fef9c44bad95271cddbea3, type: 2}

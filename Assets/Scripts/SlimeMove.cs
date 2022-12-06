@@ -29,7 +29,7 @@ public class SlimeMove : MonoBehaviour
 
         if (patrolPoints == null)
         {
-            GeneratePatrol();
+            //GeneratePatrol();
         }
 
         //collision only possible if player was intended to have rigid body

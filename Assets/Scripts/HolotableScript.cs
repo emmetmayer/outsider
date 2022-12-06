@@ -1,24 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HolotableScript : Interactable
 {
-    [SerializeField] DialogueObject mission0;
     [SerializeField] DialogueObject mission1;
+    [SerializeField] DialogueObject mission1end;
+    [SerializeField] DialogueObject mission2;
+    [SerializeField] DialogueObject mission3;
+    [SerializeField] DialogueObject mission4;
     [SerializeField] Interactable door;
     [SerializeField] Interactable deskPlant;
     public override void Interact()
     {
-        if (PlayerPrefs.GetInt("missions") == 0)
+        switch(PlayerPrefs.GetInt("mission"))
         {
-            UISystem.uiSystem.StartDialogue(mission0);
-            door.interactable = true;
-        }
-        else if (PlayerPrefs.GetInt("missions") == 1)
-        {
-            UISystem.uiSystem.StartDialogue(mission1);
-            deskPlant.interactable = true;
+            case 1:
+                if(PlayerPrefs.GetInt("missionDone") == 1)
+                {
+                    UISystem.uiSystem.StartDialogue(mission1end);
+                    deskPlant.interactable = true;
+                }
+                else
+                {
+                    UISystem.uiSystem.StartDialogue(mission1);
+                    door.interactable = true;
+                }
+                break;
+            case 2:
+                UISystem.uiSystem.StartDialogue(mission2);
+                door.interactable = true;
+                break;
+            case 3:
+                UISystem.uiSystem.StartDialogue(mission3);
+                door.interactable = true;
+                break;
+            case 4:
+                UISystem.uiSystem.StartDialogue(mission4);
+                door.interactable = true;
+                break;
+            default:
+                break;
+
         }
     }
 
@@ -29,12 +53,7 @@ public class HolotableScript : Interactable
 
     // Start is called before the first frame update
     void Start()
-    {
-        if(!PlayerPrefs.HasKey("missions"))
-        {
-            PlayerPrefs.SetInt("missions", 0);
-        }
-        
+    {    
         prompt = "Answer";
     }
 

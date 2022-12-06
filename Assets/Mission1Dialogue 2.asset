@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Mission1Dialogue 2
   m_EditorClassIdentifier: 
   speaker: Jonathan
-  text: "Good job, but we\u2019re just getting started. Get some rest and we\u2019ll
-    get you back out there in the morning."
-  dialogueOptions: []
+  text: "Our scans have found signs of life on this planet; some unique flora and
+    a species of fauna we\u2019re affectionately calling slimes. Since we haven\u2019t
+    been on the ground yet we haven\u2019t been able to learn much about them."
+  dialogueOptions:
+  - {fileID: 11400000, guid: c4c5dd9d631fd1a49a73e9bd8fd1b903, type: 2}

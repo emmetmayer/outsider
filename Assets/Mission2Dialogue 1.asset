@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f33f61b0b0ab440b375933845cb2d8, type: 3}
+  m_Name: Mission2Dialogue 1
+  m_EditorClassIdentifier: 
+  speaker: Jonathan
+  text: Analysis of the flora samples reveals that they hold a very similar chemical
+    makeup to the fuel used by our ships. Scans reveal a forest of these plants nearby.
+  dialogueOptions:
+  - {fileID: 11400000, guid: 487ab1ed90345f3469d1819266c671a3, type: 2}

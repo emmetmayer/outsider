@@ -158,8 +158,16 @@ public class UISystem : MonoBehaviour
                 mission.completed = true;
                 if(mission.nextMissions.Length == 0)
                 {
-                    PlayerPrefs.SetInt("missions", PlayerPrefs.GetInt("missions") + 1);
-                    SceneManager.LoadScene(0);
+                    if(PlayerPrefs.GetInt("mission") == 1 || PlayerPrefs.GetInt("mission") == 4)
+                    {
+                        SceneManager.LoadScene(0);
+                    }
+                    else
+                    {
+                        //main menu
+                        SceneManager.LoadScene(5);
+                    }
+
                 }
                 else
                 {
