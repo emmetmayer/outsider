@@ -25,6 +25,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] GameObject disguise;
     [SerializeField] Animator anim;
     [SerializeField] DialogueObject forest;
+    [SerializeField] DialogueObject lake;
 
     private void Awake()
     {
@@ -130,6 +131,11 @@ public class PlayerControl : MonoBehaviour
         {
             UISystem.uiSystem.StartDialogue(forest);
             UISystem.uiSystem.ProgressMission("forest");
+        }
+        if (other.name == "LakeTrigger" && UISystem.uiSystem.missionList[^1].mission == "lake")
+        {
+            UISystem.uiSystem.StartDialogue(lake);
+            UISystem.uiSystem.ProgressMission("lake");
         }
         if (other.name == "BaseTrigger")
         {

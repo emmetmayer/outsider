@@ -20,6 +20,7 @@ public class HolotableScript : Interactable
                 if(PlayerPrefs.GetInt("missionDone") == 1)
                 {
                     UISystem.uiSystem.StartDialogue(mission1end);
+                    deskPlant.gameObject.SetActive(true);
                     deskPlant.interactable = true;
                 }
                 else

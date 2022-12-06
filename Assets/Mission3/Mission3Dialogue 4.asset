@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f33f61b0b0ab440b375933845cb2d8, type: 3}
+  m_Name: Mission3Dialogue 4
+  m_EditorClassIdentifier: 
+  speaker: Jonathan
+  text: "You\u2019ll be setting up a pump to slowly pour everything in over time,
+    this will help manage the heat output from the chemical reaction separating everything."
+  dialogueOptions:
+  - {fileID: 11400000, guid: df1adaf2e1987f34a8765eae0a300f3f, type: 2}

@@ -160,6 +160,7 @@ public class UISystem : MonoBehaviour
                 {
                     if(PlayerPrefs.GetInt("mission") == 1 || PlayerPrefs.GetInt("mission") == 4)
                     {
+                        PlayerPrefs.SetInt("missionDone", 1);
                         SceneManager.LoadScene(0);
                     }
                     else
