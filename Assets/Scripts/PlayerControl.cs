@@ -27,6 +27,9 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] DialogueObject forest;
     [SerializeField] DialogueObject lake;
 
+    [SerializeField] AudioSource foot;
+    [SerializeField] AudioSource interact;
+
     private void Awake()
     {
         player = this;
@@ -66,6 +69,7 @@ public class PlayerControl : MonoBehaviour
             }
             else if (target && target.GetComponent<Interactable>().interactable)
             {
+                interact.Play();
                 target.GetComponent<Interactable>().Interact();
             } 
         }
@@ -76,6 +80,10 @@ public class PlayerControl : MonoBehaviour
             Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
             if (input.magnitude >= 0.001f)
             {
+                if(!GetComponent<AudioSource>().isPlaying)
+                {
+                    foot.Play();
+                }
                 anim.speed = 2f;
                 float targetAngle = Mathf.Atan2(input.x, input.z) * Mathf.Rad2Deg + moveCamera.transform.eulerAngles.y;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSpeed);
@@ -86,6 +94,7 @@ public class PlayerControl : MonoBehaviour
             }
             else
             {
+                foot.Pause();
                 anim.speed = 0f;
             }
             

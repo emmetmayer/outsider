@@ -8,6 +8,7 @@ public class PumpScript : Interactable
     [SerializeField] MeshRenderer[] meshes;
     bool beenTriggered;
     [SerializeField] DialogueObject completionDialogue;
+    [SerializeField] AudioSource hum;
     public override void Interact()
     {
         for (int i = 0; i < 4;  i++)
@@ -18,6 +19,7 @@ public class PumpScript : Interactable
         if(UISystem.uiSystem.missionList[^1].mission == "pump" && UISystem.uiSystem.missionList[^1].progress == UISystem.uiSystem.missionList[^1].completionProgress-1)
         {
             UISystem.uiSystem.StartDialogue(completionDialogue);
+            hum.Play();
         }
         UISystem.uiSystem.ProgressMission("pump");
         //start dialogue if this is the last camera
@@ -31,7 +33,10 @@ public class PumpScript : Interactable
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        foreach (MeshRenderer mesh in meshes)
+        {
+            mesh.enabled = false;
+        }
         prompt = "Place";
         interactable = false;
     }
@@ -43,7 +48,10 @@ public class PumpScript : Interactable
         {
             interactable = true;
             beenTriggered = true;
-            gameObject.GetComponent<MeshRenderer>().enabled = true;
+            foreach (MeshRenderer mesh in meshes)
+            {
+                mesh.enabled = true;
+            }
         }
     }
 }

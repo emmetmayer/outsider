@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f33f61b0b0ab440b375933845cb2d8, type: 3}
+  m_Name: End0 C 2
+  m_EditorClassIdentifier: 
+  speaker: Player
+  text: These are intelligent life forms, the initial classification was wrong. We
+    can't do this to them.
+  dialogueOptions:
+  - {fileID: 11400000, guid: 13bdf0e6d18180949baf462b3431f08e, type: 2}

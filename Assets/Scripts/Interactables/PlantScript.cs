@@ -33,7 +33,6 @@ public class PlantScript : Interactable
         if (UISystem.uiSystem.missionList[^1].mission == "plant" && !interactable)
         {
             interactable = true;
-            gameObject.GetComponent<MeshRenderer>().enabled = true;
         }
     }
 }

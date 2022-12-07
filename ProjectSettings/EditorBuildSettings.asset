@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Mission3/Mission3.unity
     guid: 1b6f7d675fb4724429f06b2e63edba09
   - enabled: 1
-    path: Assets/slime town.unity
+    path: Assets/Mission4/Mission4.unity
     guid: 7f299379c8d07e340a303d1eacb6470b
   - enabled: 1
     path: Assets/Main Menu.unity

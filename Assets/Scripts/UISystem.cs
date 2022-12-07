@@ -20,8 +20,10 @@ public class UISystem : MonoBehaviour
     [SerializeField] Collider playerTarget;
 
     [SerializeField] GameObject dialoguePanel;
-    private TextMeshProUGUI speakerText;
-    private TextMeshProUGUI dialogueMain;
+    [SerializeField] TextMeshProUGUI speakerText;
+    [SerializeField] TextMeshProUGUI dialogueMain;
+    [SerializeField] TextMeshProUGUI dialogueChoiceMain;
+    [SerializeField] GameObject[] choices;
     private DialogueObject currentDialogue;
 
     [SerializeField] TextMeshProUGUI missionText;
@@ -32,11 +34,24 @@ public class UISystem : MonoBehaviour
     [SerializeField] CinemachineTargetGroup dialogueTarget;
     [SerializeField] CinemachineVirtualCamera dialogueCam;
 
+    [SerializeField] AudioSource jonathan;
+    [SerializeField] AudioSource music1;
+    [SerializeField] AudioSource music2;
+
+
     public float RANGE = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (Random.value > .5f)
+        {
+            music1.Play();
+        }
+        else 
+        { 
+            music2.Play();
+        }
         if(firstMission)
         {
             missionList.Add(ScriptableObject.Instantiate(firstMission));
@@ -46,8 +61,6 @@ public class UISystem : MonoBehaviour
         cam = Camera.main;
         player = PlayerControl.player;
         dialoguePanel = GameObject.Find("DialoguePanel");
-        dialogueMain = dialoguePanel.GetComponentsInChildren<TextMeshProUGUI>()[0];
-        speakerText = dialoguePanel.GetComponentsInChildren<TextMeshProUGUI>()[1];
         dialoguePanel.SetActive(false);
     }
 
@@ -119,19 +132,64 @@ public class UISystem : MonoBehaviour
         CameraManager.cameraManager.SwitchCamera(dialogueCam);
         dialoguePanel.SetActive(true);
         currentDialogue = dialogueObj;
-        dialogueMain.text = currentDialogue.text;
+        if(currentDialogue.speaker == "Jonathan")
+        {
+            jonathan.Play();
+        }
         speakerText.text = currentDialogue.speaker;
         dialogue = true;
         player.canMove = false;
+        foreach (GameObject choice in choices)
+        {
+            choice.SetActive(false);
+        }
+        if (currentDialogue.dialogueOptions.Length <= 1)
+        {
+            dialogueChoiceMain.gameObject.SetActive(false);
+            dialogueMain.gameObject.SetActive(true);
+            dialogueMain.text = currentDialogue.text;
+        }
+        else
+        {
+            dialogueMain.gameObject.SetActive(false);
+            for (int i = 0; i < currentDialogue.dialogueOptions.Length; i++)
+            {
+                choices[i].SetActive(true);
+                choices[i].GetComponentInChildren<TextMeshProUGUI>().text = currentDialogue.dialogueOptions[i].text; 
+            }
+            dialogueChoiceMain.gameObject.SetActive(true);
+            dialogueChoiceMain.text = currentDialogue.text;
+        }
+        dialogueMain.text = currentDialogue.text;
     }
 
-    public void ContinueDialogue()
+    public void ContinueDialogue(int x = 0)
     {
         if(currentDialogue.dialogueOptions.Length != 0)
         {
-            currentDialogue = currentDialogue.dialogueOptions[0];
+            currentDialogue = currentDialogue.dialogueOptions[x];
             speakerText.text = currentDialogue.speaker;
-            dialogueMain.text = currentDialogue.text;
+            foreach (GameObject choice in choices)
+            {
+                choice.SetActive(false);
+            }
+            if (currentDialogue.dialogueOptions.Length < 2)
+            {
+                dialogueChoiceMain.gameObject.SetActive(false);
+                dialogueMain.gameObject.SetActive(true);
+                dialogueMain.text = currentDialogue.text;
+            }
+            else
+            {
+                dialogueMain.gameObject.SetActive(false);
+                for (int i = 0; i < currentDialogue.dialogueOptions.Length; i++)
+                {
+                    choices[i].SetActive(true);
+                    choices[i].GetComponentInChildren<TextMeshProUGUI>().text = currentDialogue.dialogueOptions[i].text;
+                }
+                dialogueChoiceMain.gameObject.SetActive(true);
+                dialogueChoiceMain.text = currentDialogue.text;
+            }
         }
         else
         {
@@ -141,6 +199,10 @@ public class UISystem : MonoBehaviour
 
     public void EndDialogue()
     {
+        if((PlayerPrefs.GetInt("mission") == 4) && (PlayerPrefs.GetInt("missionDone") == 1))
+        {
+            SceneManager.LoadScene(5);
+        }
         CameraManager.cameraManager.SwitchCamera(PlayerControl.player.mainCamera);
         dialoguePanel.SetActive(false);
         dialogue = false;

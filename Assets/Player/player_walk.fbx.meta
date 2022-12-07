@@ -6,7 +6,31 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Default_Material
+    second: {fileID: -1134714066672644336, guid: 0d60ee0297484c745832e916038cd4d5,
+      type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: brown_fabric
+    second: {fileID: -5262218741203439617, guid: 0d60ee0297484c745832e916038cd4d5,
+      type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shoe_soles
+    second: {fileID: -5428496906843426270, guid: 0d60ee0297484c745832e916038cd4d5,
+      type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skin
+    second: {fileID: 9171952328373019990, guid: 0d60ee0297484c745832e916038cd4d5,
+      type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

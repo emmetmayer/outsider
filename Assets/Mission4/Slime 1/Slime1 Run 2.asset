@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f33f61b0b0ab440b375933845cb2d8, type: 3}
+  m_Name: Slime1 Run 2
+  m_EditorClassIdentifier: 
+  speaker: Slime
+  text: 'Schloshl is in charge of counting votes, they don''t get one because of
+    that, but that''s the closest to leading I guess. '
+  dialogueOptions: []

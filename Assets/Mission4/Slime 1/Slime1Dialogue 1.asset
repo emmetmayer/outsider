@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f33f61b0b0ab440b375933845cb2d8, type: 3}
+  m_Name: Slime1Dialogue 1
+  m_EditorClassIdentifier: 
+  speaker: Slime
+  text: Huh? Can I help you with something?
+  dialogueOptions:
+  - {fileID: 11400000, guid: bc57328f3ddb4494d802a39e383dc206, type: 2}
+  - {fileID: 11400000, guid: a560099fa1d0f194ea257d725ad72ebc, type: 2}
+  - {fileID: 11400000, guid: 638909261cd35b54f9beac51a902c3fd, type: 2}
+  - {fileID: 11400000, guid: 8f543046a1b043540ae463f6083a5ed6, type: 2}

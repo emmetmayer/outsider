@@ -10,6 +10,7 @@ public class HolotableScript : Interactable
     [SerializeField] DialogueObject mission2;
     [SerializeField] DialogueObject mission3;
     [SerializeField] DialogueObject mission4;
+    [SerializeField] DialogueObject mission4end;
     [SerializeField] Interactable door;
     [SerializeField] Interactable deskPlant;
     public override void Interact()
@@ -38,8 +39,15 @@ public class HolotableScript : Interactable
                 door.interactable = true;
                 break;
             case 4:
-                UISystem.uiSystem.StartDialogue(mission4);
-                door.interactable = true;
+                if (PlayerPrefs.GetInt("missionDone") == 1)
+                {
+                    UISystem.uiSystem.StartDialogue(mission4end);
+                }
+                else
+                {
+                    UISystem.uiSystem.StartDialogue(mission4);
+                    door.interactable = true;
+                }
                 break;
             default:
                 break;

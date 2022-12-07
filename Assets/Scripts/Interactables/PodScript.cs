@@ -33,7 +33,6 @@ public class PodScript : Interactable
         if (UISystem.uiSystem.missionList[^1].mission == "pod" && !interactable)
         {
             interactable = true;
-            gameObject.GetComponent<MeshRenderer>().enabled = true;
         }
     }
 }

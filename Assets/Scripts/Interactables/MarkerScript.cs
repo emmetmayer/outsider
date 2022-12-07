@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class MarkerScript : Interactable
 {
-    [SerializeField] Material normalMat;
+    [SerializeField] Material[] normalMats;
+    [SerializeField] MeshRenderer[] meshes;
     bool beenTriggered;
     [SerializeField] DialogueObject completionDialogue;
     public override void Interact()
     {
-        gameObject.GetComponent<MeshRenderer>().material = normalMat;
+        for (int i = 0; i < 2; i++)
+        {
+            meshes[i].material = normalMats[i];
+        }
         interactable = false;
         if(UISystem.uiSystem.missionList[^1].mission == "marker" && UISystem.uiSystem.missionList[^1].progress == UISystem.uiSystem.missionList[^1].completionProgress-1)
         {
@@ -27,7 +31,10 @@ public class MarkerScript : Interactable
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        foreach (MeshRenderer mesh in meshes)
+        {
+            mesh.enabled = false;
+        }
         prompt = "Place";
         interactable = false;
     }
@@ -39,7 +46,10 @@ public class MarkerScript : Interactable
         {
             interactable = true;
             beenTriggered = true;
-            gameObject.GetComponent<MeshRenderer>().enabled = true;
+            foreach (MeshRenderer mesh in meshes)
+            {
+                mesh.enabled = true;
+            }
         }
     }
 }
