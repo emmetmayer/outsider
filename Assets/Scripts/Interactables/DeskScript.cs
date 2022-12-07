@@ -11,7 +11,7 @@ public class DeskScript : Interactable
     {
         gameObject.GetComponent<MeshRenderer>().material = normalMat;
         interactable = false;
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(0);
     }
 
     public override string Prompt()

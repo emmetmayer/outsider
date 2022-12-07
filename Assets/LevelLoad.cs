@@ -21,6 +21,6 @@ public class LevelLoad : MonoBehaviour
     {
         PlayerPrefs.SetInt("mission", level);
         PlayerPrefs.SetInt("missionDone", 0);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(5);
     }
 }

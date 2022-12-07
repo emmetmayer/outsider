@@ -201,7 +201,7 @@ public class UISystem : MonoBehaviour
     {
         if((PlayerPrefs.GetInt("mission") == 4) && (PlayerPrefs.GetInt("missionDone") == 1))
         {
-            SceneManager.LoadScene(5);
+            SceneManager.LoadScene(0);
         }
         CameraManager.cameraManager.SwitchCamera(PlayerControl.player.mainCamera);
         dialoguePanel.SetActive(false);
@@ -223,12 +223,12 @@ public class UISystem : MonoBehaviour
                     if(PlayerPrefs.GetInt("mission") == 1 || PlayerPrefs.GetInt("mission") == 4)
                     {
                         PlayerPrefs.SetInt("missionDone", 1);
-                        SceneManager.LoadScene(0);
+                        SceneManager.LoadScene(5);
                     }
                     else
                     {
                         //main menu
-                        SceneManager.LoadScene(5);
+                        SceneManager.LoadScene(0);
                     }
 
                 }
